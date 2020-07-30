@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR.WSA;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -15,11 +14,11 @@ public class LevelGenerator : MonoBehaviour
     List<GameObject> groundToSpawn;
 
     [SerializeField]
-    Vector3 spawnPosition = new Vector3(-3, 0, 0);
+    Vector3 spawnPosition = new Vector3(-2, 0, 0);
     [SerializeField]
-    Vector3 endPosition = new Vector3(1, 0, 0);
+    Vector3 endPosition = new Vector3(2, 0, 0);
     [SerializeField]
-    Vector3 deletePoint = new Vector3(2, 0, 0);
+    Vector3 deletePoint = new Vector3(6, 0, 0);
 
     float posX, posY, posZ;
 
@@ -56,9 +55,9 @@ public class LevelGenerator : MonoBehaviour
 
     void Start()
     {
-        spawnPosition = new Vector3((posX - 3), posY, posZ);
-        endPosition = new Vector3((posX + 1), posY, posZ);
-        deletePoint = new Vector3((posX + 2), posY, posZ);
+        //spawnPosition = new Vector3((posX - 3), posY, posZ);
+        //endPosition = new Vector3((posX + 1), posY, posZ);
+        //deletePoint = new Vector3((posX + 2), posY, posZ);
 
         for (int i = 0; i <1; i++)
         {
