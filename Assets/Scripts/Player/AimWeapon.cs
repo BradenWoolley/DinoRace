@@ -21,7 +21,7 @@ public class AimWeapon : MonoBehaviour
         transform.Rotate(new Vector3(0, joystick.Horizontal * rotateSpeed * Time.deltaTime));
         crossHair.transform.Translate(crossHairSpeed * joystick.Horizontal * rotateSpeed * Time.deltaTime, 0, 0);
 
-        /*if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
             transform.Rotate(new Vector3(0, -rotateSpeed * Time.deltaTime));
             crossHair.transform.Translate(crossHairSpeed *-rotateSpeed * Time.deltaTime, 0 , 0);
@@ -31,6 +31,6 @@ public class AimWeapon : MonoBehaviour
         {
             transform.Rotate(new Vector3(0, rotateSpeed * Time.deltaTime));
             crossHair.transform.Translate(crossHairSpeed * rotateSpeed * Time.deltaTime, 0, 0);
-        }*/
+        }
     }
 }
