@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!136 &541130641
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4296836321257828853}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 4
+  m_Direction: 1
+  m_Center: {x: 0, y: 2.76, z: 4.14}
 --- !u!95 &5224317165114419454
 Animator:
   serializedVersion: 3
@@ -19,20 +33,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &541130641
-CapsuleCollider:
+--- !u!114 &541130642
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4296836321257828853}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 2.57
-  m_Height: 11.22
-  m_Direction: 2
-  m_Center: {x: 0, y: 2.6, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd6c862710d4cc04686522030f617455, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5224317164995789556
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,7 +108,7 @@ MonoBehaviour:
   rotateSpeed: 12
   crossHairSpeed: 12
   joystick: {fileID: 0}
---- !u!114 &6556924859660973584
+--- !u!114 &1224207660
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,10 +117,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 5224317165192325363}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d59a9c2b63f53de40b92da44d2f8370f, type: 3}
+  m_Script: {fileID: 11500000, guid: 1bb5c65e750c3db438e7fb4e5c110f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crossHair: {fileID: 0}
+--- !u!114 &9142900972639611468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5224317165192325363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cecb3957e67e0941be1ba6b7497634b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Shoot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1635607951}
+        m_MethodName: Shoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5224317166218409253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,6 +192,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1635607951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5224317165557835503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59a9c2b63f53de40b92da44d2f8370f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crossHair: {fileID: 0}
 --- !u!1001 &5224317164697019178
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -310,6 +360,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Velociraptor
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: dbd3f0630a77d9a4ea2029a4e9588b81,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: dbd3f0630a77d9a4ea2029a4e9588b81,
+        type: 3}
+      propertyPath: m_TagString
+      value: Dino
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbd3f0630a77d9a4ea2029a4e9588b81, type: 3}
@@ -491,5 +551,15 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.39370072
       objectReference: {fileID: 0}
+    - target: {fileID: 3300000, guid: 4d9b132573d0584439c28e583cfce43d, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 9e30c789e09d88649822232caa477ec8, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d9b132573d0584439c28e583cfce43d, type: 3}
+--- !u!1 &5224317165557835503 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 4d9b132573d0584439c28e583cfce43d,
+    type: 3}
+  m_PrefabInstance: {fileID: 5224317165557866575}
+  m_PrefabAsset: {fileID: 0}
