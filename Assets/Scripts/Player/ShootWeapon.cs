@@ -16,9 +16,11 @@ public class ShootWeapon : MonoBehaviour
 
     PlayerAnimation anim;
 
+    AudioSource gunAudio;
     private void Start()
     {
         anim = GetComponentInParent<PlayerAnimation>();
+        gunAudio=GetComponent<AudioSource>();
     }
 
     public float FireRate
@@ -60,7 +62,7 @@ public class ShootWeapon : MonoBehaviour
 
     private IEnumerator ShotEffect()
     {
-        //gunAudio.Play();
+        gunAudio.Play();
 
         anim.OnShoot();
         yield return shotDuration;
