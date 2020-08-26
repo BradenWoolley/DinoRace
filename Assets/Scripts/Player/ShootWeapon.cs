@@ -2,22 +2,67 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ShootWeapon : MonoBehaviour
 {
 
-    float fireRate;
-    float ammo;
+    float fireRate = 0.25f;
+    int damage = 10;
+    float ammo = 30;
     [SerializeField] GameObject crossHair;
 
-    public void OnShoot()
+    private WaitForSeconds shotDuration = new WaitForSeconds(0.07f);
+    private float nextFire;
+
+    PlayerAnimation anim;
+
+    private void Start()
     {
-        RaycastHit hit;
+        anim = GetComponentInParent<PlayerAnimation>();
+    }
 
-        Ray ray = Camera.main.ScreenPointToRay(crossHair.transform.position);
+    public float FireRate
+    {
+        get { return fireRate; }
+        set { fireRate = value; }
+    }
 
-        if(Physics.Raycast(ray, out hit))
+    public void Shoot()
+    {
+        if(ammo > 0 && Time.time > nextFire)
         {
-            Debug.Log($"Hit {hit.collider.gameObject.name}");
+            //StartCoroutine("fireBullet", 0.5f);
+            //Debug.LogWarning("Shot gun");
+            ammo--;
+            nextFire = Time.time + fireRate;
+            StartCoroutine(ShotEffect());
+            RaycastHit hit;
+
+            Ray ray = Camera.main.ScreenPointToRay(crossHair.transform.position);
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.collider.gameObject.tag.Equals("Dino"))
+                {
+                    ITakeDamage damage = hit.collider.GetComponent<ITakeDamage>();
+                    if (damage != null)
+                        damage.TakeDamage(10);
+                }
+            }
         }
+
+        else
+        {
+            //Debug.LogWarning("Out of ammo");
+        }
+        
+    }
+
+    private IEnumerator ShotEffect()
+    {
+        //gunAudio.Play();
+
+        anim.OnShoot();
+        yield return shotDuration;
     }
 }
