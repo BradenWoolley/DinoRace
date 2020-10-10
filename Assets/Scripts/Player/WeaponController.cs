@@ -4,13 +4,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class WeaponController : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*/
+public class WeaponController : MonoBehaviour
 {
-    [SerializeField] UnityEvent Shoot;
-
-    //Get equipped weapon for firerate
     [SerializeField] GameObject[] weapons;
     GameObject activeWeapon;
+
+    public GameObject ActiveWeapon { get => activeWeapon; set => activeWeapon = value; }
 
     private void Start()
     {
@@ -18,31 +17,27 @@ public class WeaponController : MonoBehaviour/*, IPointerDownHandler, IPointerUp
         {
             if (gun.activeInHierarchy)
             {
-                activeWeapon = gun;
+                ActiveWeapon = gun;
                 break;
             }
         }
     }
 
-
-    //bool isFiring = false;
-
-    /*void Update()
+    //TODO implement method to UI event
+    void SwapWeapon()
     {
-        if (isFiring)
+        foreach(var gun in weapons)
         {
-            //if(Time.time > activeWeapon.GetComponent<ShootWeapon>().fire)
+            if (gun.activeInHierarchy)
+            {
+                gun.SetActive(false);
+            }
+
+            else
+            {
+                gun.SetActive(true);
+                ActiveWeapon = gun;
+            }
         }
-    }*/
-
-    /*public void OnPointerDown(PointerEventData eventData)
-    {
-        isFiring = true;
-
     }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        isFiring = false;
-    }*/
 }

@@ -4,26 +4,49 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class Shooting : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*/
+public class Shooting : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    /*[SerializeField] UnityEvent Shoot;
+    [SerializeField] UnityEvent Shoot;
 
     bool isFiring = false;
+    [SerializeField]
+    WeaponController weaponController;
+    ShootWeapon currentWeapon;
+
+
+    private void Start()
+    {
+        weaponController = GetComponent<WeaponController>();
+    }
 
     void Update()
     {
         if (isFiring)
+        {
             Shoot.Invoke();
+        }
+           
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        isFiring = true;
-
+        
+        if(!isFiring)
+        {
+            currentWeapon = weaponController.ActiveWeapon.GetComponent<ShootWeapon>();
+            Shoot.AddListener(currentWeapon.Shoot);
+            isFiring = true;
+        }
+            
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        isFiring = false;
-    }*/
+        if (isFiring)
+        {
+            isFiring = false;
+            Shoot.RemoveListener(currentWeapon.Shoot);
+        }
+        
+    }
 }

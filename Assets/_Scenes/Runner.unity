@@ -212,37 +212,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1421637791}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &435320286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 435320284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d59a9c2b63f53de40b92da44d2f8370f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  crossHair: {fileID: 682603927}
 --- !u!1 &591713332 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5224317165557835503, guid: 4420d43ebf123f64486e237d49484aa1,
     type: 3}
   m_PrefabInstance: {fileID: 1976835061}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &591713334 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1635607951, guid: 4420d43ebf123f64486e237d49484aa1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1976835061}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 591713332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d59a9c2b63f53de40b92da44d2f8370f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &591713337
 AudioSource:
   m_ObjectHideFlags: 0
@@ -253,7 +228,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6dd7024f00606b44eb5884197a66a893, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6739c01659ad96d47987f4ddee226b36, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -708,7 +683,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 5928b07c18727fe47acb7df646f608ef, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5928b07c18727fe47acb7df646f608ef, type: 3}
       propertyPath: m_LocalPosition.x
@@ -754,17 +729,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 5928b07c18727fe47acb7df646f608ef, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.39370072
+    - target: {fileID: 435320286, guid: 5928b07c18727fe47acb7df646f608ef, type: 3}
+      propertyPath: crossHair
+      value: 
+      objectReference: {fileID: 682603927}
+    - target: {fileID: 435320286, guid: 5928b07c18727fe47acb7df646f608ef, type: 3}
+      propertyPath: damage
+      value: 25
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 5928b07c18727fe47acb7df646f608ef, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.3937007
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 5928b07c18727fe47acb7df646f608ef, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.39370072
+    - target: {fileID: 435320286, guid: 5928b07c18727fe47acb7df646f608ef, type: 3}
+      propertyPath: damageAmount
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5928b07c18727fe47acb7df646f608ef, type: 3}
@@ -783,6 +758,14 @@ PrefabInstance:
       propertyPath: crossHair
       value: 
       objectReference: {fileID: 682603927}
+    - target: {fileID: 1635607951, guid: 4420d43ebf123f64486e237d49484aa1, type: 3}
+      propertyPath: fireRate
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1635607951, guid: 4420d43ebf123f64486e237d49484aa1, type: 3}
+      propertyPath: ammo
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5224317165307296022, guid: 4420d43ebf123f64486e237d49484aa1,
         type: 3}
       propertyPath: m_Name
@@ -841,6 +824,11 @@ PrefabInstance:
     - target: {fileID: 5224317165307296023, guid: 4420d43ebf123f64486e237d49484aa1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224317165557835503, guid: 4420d43ebf123f64486e237d49484aa1,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5224317165561133807, guid: 4420d43ebf123f64486e237d49484aa1,
@@ -992,7 +980,7 @@ GameObject:
   - component: {fileID: 2115862703}
   - component: {fileID: 2115862702}
   - component: {fileID: 2115862701}
-  - component: {fileID: 2115862704}
+  - component: {fileID: 2115862705}
   m_Layer: 5
   m_Name: Fire/Reload
   m_TagString: Untagged
@@ -1026,25 +1014,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2115862699}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5bee08434b69a354b9cfca83c969bd0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Shoot:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 591713334}
-        m_MethodName: Shoot
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   weapons:
   - {fileID: 591713332}
   - {fileID: 435320284}
@@ -1085,7 +1059,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2115862699}
   m_CullTransparentMesh: 0
---- !u!114 &2115862704
+--- !u!114 &2115862705
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1094,48 +1068,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2115862699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 5aca96825a87d7949a39ebcd0b17188b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 2115862702}
-  m_OnClick:
+  Shoot:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 591713334}
-        m_MethodName: Shoot
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  weaponController: {fileID: 0}

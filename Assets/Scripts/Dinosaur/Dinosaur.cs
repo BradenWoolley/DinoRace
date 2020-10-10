@@ -10,6 +10,9 @@ public class Dinosaur : MonoBehaviour, ITakeDamage
     {
         health -= damage;
         if (health <= 0)
+        {
             gameObject.SetActive(false);
+        }
+            
     }
 }

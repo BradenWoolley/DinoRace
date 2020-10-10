@@ -5,13 +5,19 @@ using UnityEngine;
 
 public class ShootWeapon : MonoBehaviour
 {
-
+    [SerializeField]
     float fireRate = 0.25f;
-    int damage = 10;
+
+    [SerializeField]
+    int damageAmount = 10;
+
+    [SerializeField]
     float ammo = 30;
+
     [SerializeField] GameObject crossHair;
 
     private WaitForSeconds shotDuration = new WaitForSeconds(0.07f);
+
     private float nextFire;
 
     PlayerAnimation anim;
@@ -33,8 +39,6 @@ public class ShootWeapon : MonoBehaviour
     {
         if(ammo > 0 && Time.time > nextFire)
         {
-            //StartCoroutine("fireBullet", 0.5f);
-            //Debug.LogWarning("Shot gun");
             ammo--;
             nextFire = Time.time + fireRate;
             StartCoroutine(ShotEffect());
@@ -48,14 +52,14 @@ public class ShootWeapon : MonoBehaviour
                 {
                     ITakeDamage damage = hit.collider.GetComponent<ITakeDamage>();
                     if (damage != null)
-                        damage.TakeDamage(10);
+                        damage.TakeDamage(damageAmount);
                 }
             }
         }
 
         else
         {
-            //Debug.LogWarning("Out of ammo");
+            //TODO: Add out of ammo audio clip
         }
         
     }
