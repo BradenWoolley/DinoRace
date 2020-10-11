@@ -1,43 +1,82 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Shooting : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    [SerializeField] UnityEvent Shoot;
+    [SerializeField]UnityEvent Shoot;
 
     bool isFiring = false;
+
     [SerializeField]
     WeaponController weaponController;
+
     ShootWeapon currentWeapon;
 
+    float reloadDuration;
+
+    Image ui;
+
+    int colourCount = 0;
 
     private void Start()
     {
         weaponController = GetComponent<WeaponController>();
+        ui = GetComponent<Image>();
+        ui.color = Color.white;
     }
 
     void Update()
     {
-        if (isFiring)
+        if (currentWeapon != null)
         {
-            Shoot.Invoke();
+            if (currentWeapon.Ammo > 0)
+            {
+                if(colourCount < 1)
+                {
+                    colourCount++;
+                    Invoke("Reload", reloadDuration);
+                }
+            }
+
+            else
+            {
+                ui.color = Color.red;
+            }
+
+            if (isFiring)
+            {
+                Shoot.Invoke();
+            }
+
+            Debug.Log(currentWeapon.Ammo.ToString());
         }
-           
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        
         if(!isFiring)
         {
             currentWeapon = weaponController.ActiveWeapon.GetComponent<ShootWeapon>();
-            Shoot.AddListener(currentWeapon.Shoot);
+            reloadDuration = currentWeapon.ReloadDelay;
+
             isFiring = true;
         }
-            
+
+        if (currentWeapon.Ammo <= 0)
+        {
+            Shoot.AddListener(currentWeapon.Reload);
+            Shoot.RemoveListener(currentWeapon.Shoot);
+        }
+
+        else
+        {
+            Shoot.AddListener(currentWeapon.Shoot);
+            Shoot.RemoveListener(currentWeapon.Reload);
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -45,8 +84,13 @@ public class Shooting : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (isFiring)
         {
             isFiring = false;
-            Shoot.RemoveListener(currentWeapon.Shoot);
+            Shoot.RemoveAllListeners();
         }
-        
+    }
+
+    private void Reload()
+    {
+        ui.color = Color.white;
+        colourCount = 0;
     }
 }

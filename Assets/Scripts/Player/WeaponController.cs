@@ -24,7 +24,7 @@ public class WeaponController : MonoBehaviour
     }
 
     //TODO implement method to UI event
-    void SwapWeapon()
+    public void SwapWeapon()
     {
         foreach(var gun in weapons)
         {

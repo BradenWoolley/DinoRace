@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -12,34 +11,38 @@ public class ShootWeapon : MonoBehaviour
     int damageAmount = 10;
 
     [SerializeField]
-    float ammo = 30;
+    float maxAmmo = 30;
 
     [SerializeField] GameObject crossHair;
 
     private WaitForSeconds shotDuration = new WaitForSeconds(0.07f);
+    private WaitForSeconds reloadDuration;
 
-    private float nextFire;
+    [SerializeField]
+    private float nextFire, reloadDelay = 0.2f;
+
+    float ammo = 30;
 
     PlayerAnimation anim;
 
     AudioSource gunAudio;
+
+    public float Ammo { get => ammo; set => ammo = value; }
+    public float ReloadDelay { get => reloadDelay; set => reloadDelay = value; }
+
     private void Start()
     {
+        ammo = maxAmmo;
         anim = GetComponentInParent<PlayerAnimation>();
         gunAudio=GetComponent<AudioSource>();
-    }
-
-    public float FireRate
-    {
-        get { return fireRate; }
-        set { fireRate = value; }
+        reloadDuration = new WaitForSeconds(ReloadDelay);
     }
 
     public void Shoot()
     {
-        if(ammo > 0 && Time.time > nextFire)
+        if(Ammo > 0 && Time.time > nextFire)
         {
-            ammo--;
+            Ammo--;
             nextFire = Time.time + fireRate;
             StartCoroutine(ShotEffect());
             RaycastHit hit;
@@ -70,5 +73,19 @@ public class ShootWeapon : MonoBehaviour
 
         anim.OnShoot();
         yield return shotDuration;
+    }
+
+    public void Reload()
+    {
+        nextFire = Time.time + ReloadDelay;
+        StartCoroutine(ReloadTime());
+
+        //TODO: Add reload audioclip
+    }
+
+    private IEnumerator ReloadTime()
+    {
+        ammo = maxAmmo;
+        yield return reloadDuration;
     }
 }
