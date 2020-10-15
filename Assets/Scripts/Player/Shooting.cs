@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Threading;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Shooting : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    [SerializeField]UnityEvent Shoot;
+    delegate void Shoot();
+    Shoot shoot;
 
     bool isFiring = false;
 
@@ -49,7 +47,7 @@ public class Shooting : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
             if (isFiring)
             {
-                Shoot.Invoke();
+                shoot();
             }
 
             Debug.Log(currentWeapon.Ammo.ToString());
@@ -68,14 +66,14 @@ public class Shooting : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
         if (currentWeapon.Ammo <= 0)
         {
-            Shoot.AddListener(currentWeapon.Reload);
-            Shoot.RemoveListener(currentWeapon.Shoot);
+            shoot += currentWeapon.Reload;
+            shoot -= currentWeapon.Shoot;
         }
 
         else
         {
-            Shoot.AddListener(currentWeapon.Shoot);
-            Shoot.RemoveListener(currentWeapon.Reload);
+            shoot += currentWeapon.Shoot;
+            shoot -= currentWeapon.Reload;
         }
     }
 
@@ -84,7 +82,9 @@ public class Shooting : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (isFiring)
         {
             isFiring = false;
-            Shoot.RemoveAllListeners();
+
+            shoot -= currentWeapon.Shoot;
+            shoot -= currentWeapon.Reload;
         }
     }
 

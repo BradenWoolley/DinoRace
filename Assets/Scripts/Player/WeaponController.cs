@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
+﻿using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
@@ -23,7 +19,6 @@ public class WeaponController : MonoBehaviour
         }
     }
 
-    //TODO implement method to UI event
     public void SwapWeapon()
     {
         foreach(var gun in weapons)

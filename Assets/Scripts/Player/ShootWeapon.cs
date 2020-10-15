@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-
 public class ShootWeapon : MonoBehaviour
 {
     [SerializeField]
@@ -79,7 +78,7 @@ public class ShootWeapon : MonoBehaviour
     {
         nextFire = Time.time + ReloadDelay;
         StartCoroutine(ReloadTime());
-
+        //TODO: Add Muzzle effect
         //TODO: Add reload audioclip
     }
 
